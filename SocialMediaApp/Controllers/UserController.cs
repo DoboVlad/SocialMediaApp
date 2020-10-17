@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SocialMediaApp.Data;
 using SocialMediaApp.Model;
@@ -19,6 +20,7 @@ namespace SocialMediaApp.Controllers
             this.db = db;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> getUsers()
         {

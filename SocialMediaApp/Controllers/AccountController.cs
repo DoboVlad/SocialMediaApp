@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SocialMediaApp.Data;
 using SocialMediaApp.DTO;
 using SocialMediaApp.Model;
+using SocialMediaApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +17,16 @@ namespace SocialMediaApp.Controllers
     public class AccountController: ControllerBase
     {
         private readonly SocialMediaDataContext db;
-        public AccountController(SocialMediaDataContext db)
+        private readonly TokenService tokenService;
+        public AccountController(SocialMediaDataContext db, TokenService tokenService)
         {
             this.db = db;
+            this.tokenService = tokenService;
         }
 
         [HttpPost]
         [Route("register")]
-        public async Task<ActionResult<User>> registerUser(RegisterDto registerDto)
+        public async Task<ActionResult<UserSuccesDto>> registerUser(RegisterDto registerDto)
         {
             using var hpass = new HMACSHA512();
 
@@ -39,12 +42,18 @@ namespace SocialMediaApp.Controllers
             db.User.Add(user);
             await db.SaveChangesAsync();
 
-            return user;
+            return new UserSuccesDto
+            {
+                firstName = user.firstName,
+                lastName = user.lastName,
+                email = user.lastName,
+                Token = tokenService.CreateToken(user)
+            };
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<User>> LoginUser(LoginDto loginDto)
+        public async Task<ActionResult<UserSuccesDto>> LoginUser(LoginDto loginDto)
         {
             var user = await db.User.SingleOrDefaultAsync(user => user.email == loginDto.email);
 
@@ -65,7 +74,14 @@ namespace SocialMediaApp.Controllers
                     return Unauthorized("Invalid Credentials");
                 }
             }
-            return user;
+
+            return new UserSuccesDto
+            {
+                firstName = user.firstName,
+                lastName = user.lastName,
+                email = user.lastName,
+                Token = tokenService.CreateToken(user)
+            };
         }
     }
 }
