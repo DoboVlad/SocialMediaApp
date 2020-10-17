@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SocialMediaApp.Data;
 using SocialMediaApp.DTO;
 using SocialMediaApp.Model;
@@ -38,6 +39,32 @@ namespace SocialMediaApp.Controllers
             db.User.Add(user);
             await db.SaveChangesAsync();
 
+            return user;
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult<User>> LoginUser(LoginDto loginDto)
+        {
+            var user = await db.User.SingleOrDefaultAsync(user => user.email == loginDto.email);
+
+            
+            if (user == null)
+            {
+                return Unauthorized("Invalid Credentials");
+            }
+
+            using var hpass = new HMACSHA512(user.PasswordSalt);
+
+            var computedPassword = hpass.ComputeHash(Encoding.UTF8.GetBytes(loginDto.password));
+           
+            for (int i=0; i< computedPassword.Length; i++)
+            {
+                if (computedPassword[i] != user.PasswordHash[i])
+                {
+                    return Unauthorized("Invalid Credentials");
+                }
+            }
             return user;
         }
     }
