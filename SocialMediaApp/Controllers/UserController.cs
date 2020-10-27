@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace SocialMediaApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")] // /user
     public class UserController: ControllerBase
     {
         private readonly SocialMediaDataContext db;

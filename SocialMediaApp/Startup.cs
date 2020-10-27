@@ -31,7 +31,8 @@ namespace SocialMediaApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SocialMediaDataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddCors();
+            services.AddDbContext<SocialMediaDataContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddScoped<TokenService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -57,6 +58,11 @@ namespace SocialMediaApp
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();

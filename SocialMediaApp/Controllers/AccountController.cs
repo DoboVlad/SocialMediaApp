@@ -25,7 +25,7 @@ namespace SocialMediaApp.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
+        [Route("register")] //https://localhost:5001/register
         public async Task<ActionResult<UserSuccesDto>> registerUser(RegisterDto registerDto)
         {
             using var hpass = new HMACSHA512();
@@ -38,7 +38,7 @@ namespace SocialMediaApp.Controllers
                 PasswordHash = hpass.ComputeHash(Encoding.UTF8.GetBytes(registerDto.password)),
                 PasswordSalt = hpass.Key
             };
-
+            
             db.User.Add(user);
             await db.SaveChangesAsync();
 
