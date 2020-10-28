@@ -74,3 +74,55 @@ p.paragraph{
   transform: scale(1.2);
 }
 
+.composition{
+  position: relative;
+}
+
+.photo1{
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.3);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  z-index:0;
+  transition: all 0.3s;
+}
+
+.photo2{
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.3);
+  border-radius: 2px;
+  position: absolute;
+  right: 0;
+  top: 4rem;
+  transition: all 0.3s;
+}
+
+.photo3{
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.4);
+  border-radius: 2px;
+  position: absolute;
+  left: 20%;
+  top: 14rem;
+  transition: all 0.3s;
+}
+
+.photo1:hover{
+  box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  z-index:1;
+}
+
+.photo2:hover{
+  box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  z-index:1;
+}
+
+.photo3:hover{
+  box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  z-index:1;
+}
