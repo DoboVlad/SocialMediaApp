@@ -126,3 +126,21 @@ p.paragraph{
   transform: scale(1.05);
   z-index:1;
 }
+
+@media only screen and (max-width: 800px) {
+    section.main{
+     min-height: 100rem;
+    }
+    .container2{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .col-1{
+      min-width: 100%;
+      text-align: center;
+    }
+    .col-2{
+      min-width: 100%;
+    }
+}
