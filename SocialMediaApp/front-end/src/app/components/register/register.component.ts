@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {User} from '../../Model/User';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import {User} from '../../Model/User';
 export class RegisterComponent implements OnInit {
   signUpForm: FormGroup;
   user: User;
-  constructor(private http: HttpClient) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
@@ -24,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
   submit(){
     this.user= {...this.signUpForm.value};
-    this.http.post("https://localhost:5001/register", this.user).subscribe(data => {
-      console.log(data);
+    this.userService.registerUser(this.user).subscribe(response => {
+      console.log(response);
     })
   }
 }

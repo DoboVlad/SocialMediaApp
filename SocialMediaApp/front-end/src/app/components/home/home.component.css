@@ -143,4 +143,14 @@ p.paragraph{
     .col-2{
       min-width: 100%;
     }
+    .photo3{
+      width: 55%;
+      box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.4);
+      border-radius: 2px;
+      position: absolute;
+      left: 3rem;
+      top: 8rem;
+      transition: all 0.3s;
+    }
+
 }

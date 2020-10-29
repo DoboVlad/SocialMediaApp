@@ -1,0 +1,35 @@
+<section class="main">
+  <div class="left-section">
+    <a routerLink="/home" class="link">&larr; Back</a>
+    <h2 class="title">Login</h2>
+    <div class="form">
+    <form [formGroup] = "loginForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="text" formControlName="email" class="form-control" id="Email" name="Email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password"  formControlName="password" class="form-control" id="password" name="password">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+    <div class="register">
+      <p class="paragraph">
+        Don't have an account?
+      </p>
+      <a routerLink="/register" class="link">Register now &rarr;</a>
+    </div>
+  </div>
+  <div class="right-section">
+    <div class="text">
+      <h2 class="title">How does it work?</h2>
+      <p class="text1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem fuga harum ullam nulla, consequuntur amet sed quis, facilis natus pariatur atque vel voluptate molestias possimus doloribus sint perferendis? Consectetur, ipsam?</p>
+    </div>
+    <div class="down-section">
+      <img src="../../../assets/nat-5.jpg" alt="" class="photo ph">
+      <img src="../../../assets/nat-6.jpg" alt="" class="photo ph">
+    </div>
+  </div>
+</section>

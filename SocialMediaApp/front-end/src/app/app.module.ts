@@ -8,13 +8,17 @@ import { RegisterComponent } from './components/register/register.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegisterComponent,
-    FriendsComponent
+    FriendsComponent,
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

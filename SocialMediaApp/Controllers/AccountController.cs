@@ -79,7 +79,7 @@ namespace SocialMediaApp.Controllers
             {
                 firstName = user.firstName,
                 lastName = user.lastName,
-                email = user.lastName,
+                email = user.email,
                 Token = tokenService.CreateToken(user)
             };
         }

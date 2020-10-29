@@ -21,13 +21,14 @@
   text-decoration: none;
   border-bottom: 1px solid #008066;
   padding:3px;
-  transition: all .4s ease-in-out;
-  margin-left: 1rem;
-  transition: all 0.2s;
+  transition: all .3s ease-in-out;
+  margin-left: 2rem;
+  cursor: pointer;
 }
 
-.link:hover{
-  transform: scale(1.05);
+.link:hover {
+  color: #008066;
+  transform: scale(1.2);
 }
 
 input{
@@ -37,7 +38,6 @@ input{
 .btn-success{
   background-color: #008066;
   font-size: 1.6rem;
-
 }
 
 .title{
@@ -47,7 +47,7 @@ input{
 
 .left-section{
   flex:1;
-  border-right: 2rem black;
+  border-right: 2rem #008066;
   padding: 2rem;
 }
 
@@ -67,7 +67,7 @@ input{
 .right-section{
   flex: 0 0 50%;
   margin: 4rem auto;
-  border-left: 1px solid #000;
+  border-left: 1px solid#008066;
 }
 
 .heading-form{
@@ -76,9 +76,9 @@ input{
 
 @media only screen and (max-width: 800px) {
     .main-container{
-        display: flex;
-        flex-direction: column-reverse;
-        align-content: flex-start;
+      display: flex;
+      flex-direction: column-reverse;
+      align-content: flex-start;
     }
 
     .heading-form{
@@ -87,7 +87,6 @@ input{
 
     .left-section{
       padding: 3rem;
-
     }
 
     .photo{
