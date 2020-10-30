@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
 
   submit(){
     this.credentials = {...this.loginForm.value};
-    this.userService.logInUser(this.credentials).subscribe(response => {
-      console.log(response);
+    this.userService.logInUser(this.credentials).subscribe(user => {
+      this.userService.user = user;
       this.route.navigate(["/main"]);
+      this.userService.safeAuthData(user);
     });
-
   }
 }

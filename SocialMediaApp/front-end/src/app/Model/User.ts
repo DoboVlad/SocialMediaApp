@@ -3,7 +3,7 @@ export class User{
   password: String;
   firstName: String;
   lastName: String;
-
+  token: string;
   constructor(email?, password?, firstName?, lastName?) {
     this.email = email;
     this.password = password;

@@ -14,6 +14,27 @@ export class UserService {
     }
 
   logInUser(credentials:{email:string, password:string}){
-    return this.http.post(this.basicUrl + "/login", credentials);
+      return this.http.post<User>(this.basicUrl + "/login", credentials);
     }
+
+  safeAuthData(user: User){
+    localStorage.setItem('user', JSON.stringify(this.user));
+  }
+
+  clearAuthData(){
+    localStorage.removeItem('user');
+  }
+
+  autoAuthUser(){
+    const authenticationInfo = this.getAuthData();
+    this.user = JSON.parse(authenticationInfo);
+  }
+
+  getAuthData(){
+    const user = localStorage.getItem("user");
+    if(!user){
+      return;
+    }
+    return user;
+  }
 }

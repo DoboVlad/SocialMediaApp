@@ -1,34 +1,43 @@
 <div class="main">
   <div class="search-section">
-    Search
+    <button class="create-post btn btn-success">Create a post</button>
+    <input type="text" placeholder="Search" class="form-control">
   </div>
   <div class="helper">
-  <div class="profile-section">
-    <div class="menu">
-    <div class="photo">
-      <img src="../../../assets/user-1.jpg" class="poza">
+    <div class="profile-section">
+      <div class="menu">
+        <div class="photo">
+          <img src="../../../assets/user-1.jpg" class="poza" />
+          <p class="name">{{user.firstName}} {{user.lastName}}</p>
+        </div>
+        <div class="menu-links">
+          <a routerLink="" class="link1">Profile</a>
+        </div>
+        <div class="menu-links">
+          <a routerLink="" class="link1">Settings</a>
+        </div>
+        <div class="menu-links" (click)="logout()" style="cursor: pointer;">
+          <a (click)="logout()" class="link1" style="cursor: pointer;">Logout</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <h4 class="copy">COPYRIGHT RESERVED</h4>
+      </div>
     </div>
-      <div class="menu-links">
-        <a routerLink="" class="link1">Profile</a>
-      </div>
-      <div class="menu-links" >
-         <a routerLink="" class="link1">Settings</a>
-      </div>
-      <div class="menu-links">
-        <a routerLink="/home" class="link1">Logout</a>
+    <div class="post-section">
+      <div class="individual-post">
+        <img src="../../../assets/user-1.jpg" class="poza1" /> {{user.firstName}} {{user.lastName}}<br />
+        <p class="description">
+          I've had such a great adventure on the mountain!
+        </p>
+        <img src="../../../assets/nat-3-large.jpg" class="big-photo" alt="" />
       </div>
     </div>
-    <div class="copyright">
-      <h4 class="copy">
-        COPYRIGHT RESERVED
-      </h4>
+    <div class="left-section">
+      <div class="friend-section">
+        <img src="../../../assets/user-1.jpg" class="poza1" /> Name<br />
+      </div>
+      <div class="news">News</div>
     </div>
   </div>
-  <div class="post-section">
-    Posts
-  </div>
-  <div class="friend-section">
-    Friends
-  </div>
-</div>
 </div>
