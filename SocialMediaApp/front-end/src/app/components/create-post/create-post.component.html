@@ -1,1 +1,15 @@
-<p>create-post works!</p>
+<div class="create-post-container">
+  Where have you been, {{user.firstName}}?
+  <br>
+  <form [formGroup]="createPost" (ngSubmit)="submit()">
+  <div class="form-group">
+    <textarea type="text" formControlName="description" class="form-control" name="description" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group">
+    Choose photo:<br>
+    <input type="file" formControlName="photo" name="photo">
+  </div>
+  <button type="submit" class="btn btn-success">Add post</button>
+  <button type="submit" class="btn btn-success" (click)="viewPosts()">Cancel</button>
+  </form>
+</div>
